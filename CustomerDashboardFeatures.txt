@@ -1,0 +1,23 @@
+<--- Overall Dashboard --->
+* Purchase new server
+* Remove server
+* Access server individual Dashboard
+* Modify login details/profile details/payment details
+* Current status of servers (Online, player count, resource usage, etc.)
+* Download user information/all servers
+* Contact admin
+* Copy server?
+
+<--- Individual Server Dashboard --->
+* File system access
+* Console access
+* Current status of server (Online, player count, resource usage, etc.)
+* Whitelist/blacklist
+* IP address
+* Server type (Creative/survival/etc.)
+* Activity log
+* Server settings
+* Mod list?
+* Download/restore server
+* Automatic backup?
+* World map view
