@@ -1,9 +1,0 @@
-Use Docker
-Use Go
-
-What features the minecraft dashboard should have
-What features the admin dashboard should have
-
-What modular features will be avaliable that the admins can swap out
-
-customer and admin

@@ -1,7 +1,0 @@
-git pull
-
-git status
-
-git add .
-git commit -m "Message here"
-git push
