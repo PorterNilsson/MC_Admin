@@ -1,0 +1,15 @@
+* Install script which checks for compatible docker installation
+* Architect backend API
+    * Create new client
+        * Update database
+    * Client actions
+        * Create server
+        * Delete server
+        * Update server (most complex)
+        * Get server info
+* Create frontend
+    * Payment portal
+    * Login functionality
+    * Account overview
+
+        
