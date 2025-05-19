@@ -12,4 +12,6 @@
     * Login functionality
     * Account overview
 
-        
+5/19/25
+    * Script dev environment setup
+    * Define backend API
