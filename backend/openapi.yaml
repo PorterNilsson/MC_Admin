@@ -1,0 +1,104 @@
+openapi: 3.1.1
+info:
+  title: MC Admin OpenAPI
+  version: 0.0.0
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+    Server:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          enum: [running, stopped]
+    Servers:
+      type: array
+      items:
+        $ref: '#/components/schemas/Server'
+
+paths:
+  /user:
+    post:
+      summary: Creates a new user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User created successfully.
+        '400':
+          description: Invalid request.
+    delete:
+      summary: Delete the logged-in user.
+      responses:
+        '204':
+          description: User deleted successfully.
+        '401':
+          description: Invalid session.
+
+  /login:
+    post:
+      summary: Logs in a user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User login successful.
+        '400':
+          description: Invalid request.
+    delete:
+      summary: Logs out a user.
+      responses:
+        '204':
+          description: User logout successful.
+        '401':
+          description: Invalid session.
+  
+  /servers:
+    get:
+      summary: Retrieves a list of user's servers
+      responses:
+        '200':
+          description: A list of the user's servers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Servers'
+        '401':
+          description: User not authenticated.
+    post:
+      summary: Creates a new server.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Server'
+      responses:
+        '201':
+          description: User login successful.
+        '400':
+          description: Invalid request.
+
+
+    
+
+
+

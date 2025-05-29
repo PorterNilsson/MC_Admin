@@ -7,7 +7,7 @@ sudo apt-get upgrade -y
 echo 
 echo "-----------------------------------------------------"
 echo "Installing Docker"
-echo "----------------------------------------------------"
+echo "-----------------------------------------------------"
 echo
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -33,7 +33,7 @@ sudo systemctl enable containerd.service
 echo 
 echo "-----------------------------------------------------"
 echo "Installing Golang"
-echo "----------------------------------------------------"
+echo "-----------------------------------------------------"
 echo
 wget https://go.dev/dl/go1.24.3.linux-arm64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.3.linux-arm64.tar.gz

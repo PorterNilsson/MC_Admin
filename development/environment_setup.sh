@@ -11,20 +11,22 @@ if [ ! -f "$ISO_PATH" ]; then
     echo "-----------------------------------------------------"
     echo "ISO not found."
     echo "Downloading from $ISO_URL."
-    echo "----------------------------------------------------"
+    echo "-----------------------------------------------------"
     echo
     curl -L -o ./iso/debian-12.11.0-arm64-netinst-preseeded.iso "https://github.com/PorterNilsson/MC_Admin/releases/download/v1-debian-preseeeded-iso/debian-12.11.0-arm64-netinst-preseeded.iso"
 else
     echo 
     echo "-----------------------------------------------------"
     echo "ISO found."
+    echo "-----------------------------------------------------"
+    echo
 fi
 
 if VBoxManage list vms | grep -q "\"$VM_NAME\""; then
     echo 
     echo "-----------------------------------------------------"
     echo "VM '$VM_NAME' already exists. Deleting."
-    echo "----------------------------------------------------"
+    echo "-----------------------------------------------------"
     echo
     VBoxManage unregistervm "$VM_NAME" --delete-all
 else
@@ -34,14 +36,14 @@ fi
 echo 
 echo "-----------------------------------------------------"
 echo "Importing VM from OVA file."
-echo "----------------------------------------------------"
+echo "-----------------------------------------------------"
 echo
 VBoxManage import "$OVA_PATH" --vsys 0 --vmname "$VM_NAME"
 
 echo 
 echo "-----------------------------------------------------"
 echo "Reattaching ISO."
-echo "----------------------------------------------------"
+echo "-----------------------------------------------------"
 echo
 VBoxManage storageattach "$VM_NAME" \
   --storagectl "VirtioSCSI" \
@@ -52,7 +54,7 @@ VBoxManage storageattach "$VM_NAME" \
 echo 
 echo "-----------------------------------------------------"
 echo "Booting VM for the first time to install OS."
-echo "----------------------------------------------------"
+echo "-----------------------------------------------------"
 echo
 VBoxManage startvm "$VM_NAME" --type headless
 
@@ -65,7 +67,7 @@ sleep 5
 echo 
 echo "-----------------------------------------------------"
 echo "Install finished. Restarting VM to install userland tools."
-echo "----------------------------------------------------"
+echo "-----------------------------------------------------"
 echo
 VBoxManage startvm "$VM_NAME" --type headless
 
@@ -73,7 +75,7 @@ sleep 20
 echo 
 echo "-----------------------------------------------------"
 echo "YOU MUST ENTER PASSWORD \"mcadmindev\" THREE TIMES HERE"
-echo "----------------------------------------------------"
+echo "-----------------------------------------------------"
 echo
 
 scp -P 2222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null userland_setup.sh mcadmindev@127.0.0.1:~
@@ -82,6 +84,6 @@ ssh -t -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 2222 mcadm
 echo 
 echo "-----------------------------------------------------"
 echo "Finished setting up userland. Full Installation complete. Shutting down VM."
-echo "----------------------------------------------------"
+echo "-----------------------------------------------------"
 echo
 VBoxManage controlvm "$VM_NAME" acpipowerbutton

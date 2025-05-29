@@ -9,7 +9,7 @@
 * Copy server?
 
 <--- Individual Server Dashboard (Customer) --->
-* File system access
+* File system access and edits
 * Console access
 * Current status of server (Online, player count, resource usage, etc.)
 * Whitelist/blacklist
