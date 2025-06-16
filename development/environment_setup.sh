@@ -13,6 +13,7 @@ if [ ! -f "$ISO_PATH" ]; then
     echo "Downloading from $ISO_URL."
     echo "-----------------------------------------------------"
     echo
+    mkdir -p ./iso
     curl -L -o ./iso/debian-12.11.0-arm64-netinst-preseeded.iso "https://github.com/PorterNilsson/MC_Admin/releases/download/v1-debian-preseeeded-iso/debian-12.11.0-arm64-netinst-preseeded.iso"
 else
     echo 
