@@ -1,0 +1,13 @@
+#!ipxe
+
+:retry_dhcp
+dhcp || goto retry_dhcp
+
+chain http://10.0.2.2:8090/boot.ipxe || goto retry_chain
+
+exit
+
+:retry_chain
+echo Chainload failed, retrying in 5 seconds...
+sleep 5
+goto retry_dhcp
