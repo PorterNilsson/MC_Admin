@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 KEY_NAME="mc_admin_dev"
 PRESEED_FILE="../vm/ipxe/http/preseed.cfg"
@@ -10,6 +10,7 @@ rm -f "${KEY_NAME}.pub"
 
 # Recreate SSH key
 ssh-keygen -f "$KEY_NAME" -N "" -q
+chmod 600 $KEY_NAME
 
 # Send the key
 PUBKEY=$(cat mc_admin_dev.pub)

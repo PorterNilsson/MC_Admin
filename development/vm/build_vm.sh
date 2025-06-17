@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 # Initialize variables
 VM_NAME="MC_Admin_Dev"

@@ -1,8 +1,5 @@
 #!/bin/sh
-set -e
-
-apt-get update
-apt-get upgrade -y
+set -ex
 
 # Install Docker
 apt-get install -y ca-certificates curl
@@ -18,8 +15,6 @@ apt-get update
 
 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 docker run hello-world
-
-groupadd docker
 
 systemctl enable docker.service
 systemctl enable containerd.service
