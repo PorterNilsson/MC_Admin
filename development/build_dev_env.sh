@@ -5,6 +5,14 @@ PRESEED_FILE="vm/ipxe/http/preseed.cfg"
 KEY_NAME="mc_admin_dev"
 VM_NAME="MC_Admin_Dev"
 
+# Kill the Python server if any errors occur
+cleanup() {
+    if [ -n "$SERVER_PID" ]; then
+        kill "$SERVER_PID" 2>/dev/null || true
+    fi
+}
+trap cleanup EXIT
+
 # Set up SSH Keys and edit preseed files
 chmod 700 ssh
 cd ssh
