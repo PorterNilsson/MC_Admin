@@ -10,17 +10,6 @@ cleanup() {
     if [ -n "$SERVER_PID" ]; then
         kill "$SERVER_PID" 2>/dev/null || true
     fi
-        # Use sed to reset the line back to empty quotes ''
-    sed -i '' -E "s|(in-target sh -c \"echo ')[^']*(' > /root/.ssh/authorized_keys\"; \\\\)|\1''\2|" "$PRESEED_FILE" || {
-        echo "#################################################################"
-        echo
-        echo "WARNING! Failed to restore preseed file."
-        echo "Please manually ensure that preseed.cfg contains the following line with nothing in the single quotes as the second to last line:"
-        echo
-        echo "  in-target sh -c \"echo '' > /root/.ssh/authorized_keys\"; \\"
-        echo
-        echo "#################################################################"
-    }
 }
 trap cleanup EXIT
 

@@ -41,7 +41,7 @@ echo
 echo "Type anything when finished and hit enter."
 echo
 echo "#################################################################"
-read
+read dummy
 
 GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
 git clone git@github.com:PorterNilsson/MC_Admin.git
