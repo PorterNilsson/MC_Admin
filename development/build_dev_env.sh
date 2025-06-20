@@ -10,6 +10,7 @@ cleanup() {
     if [ -n "$SERVER_PID" ]; then
         kill "$SERVER_PID" 2>/dev/null || true
     fi
+    rm -f "$PRESEED_FILE"
 }
 trap cleanup EXIT
 
@@ -32,8 +33,7 @@ cd ..
 
 # Clean up HTTP server and preseed file
 kill $SERVER_PID
-NEW_KEY=""
-sed -i '' -E "s|(in-target sh -c \"echo ')[^']*(' > /root/.ssh/authorized_keys\"; \\\\)|\1$NEW_KEY\2|" $PRESEED_FILE
+rm -f "$PRESEED_FILE"
 
 # Set up userland environment
 VBoxManage startvm "$VM_NAME" --type headless
