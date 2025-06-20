@@ -1,13 +1,10 @@
 #!/bin/sh
-set -ex
+set -e
 
 # Initialize variables
 VM_NAME="MC_Admin_Dev"
 DISK1="ipxe-boot.vdi"
 DISK2="main.vdi"
-
-# Initialize folders
-mkdir -p vm
 
 # Delete old VM if it exists
 if VBoxManage showvminfo "$VM_NAME" >/dev/null 2>&1; then

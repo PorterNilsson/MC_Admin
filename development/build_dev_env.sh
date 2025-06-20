@@ -1,5 +1,5 @@
 #!/bin/sh
-set -ex
+set -e
 
 PRESEED_FILE="vm/ipxe/http/preseed.cfg"
 KEY_NAME="mc_admin_dev"
@@ -33,3 +33,9 @@ sleep 10
 scp -i ssh/${KEY_NAME} -P 2222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null set_up_userspace.sh root@localhost:/root/
 ssh -i ssh/${KEY_NAME} -p 2222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@localhost '/root/set_up_userspace.sh'
 VBoxManage controlvm "$VM_NAME" acpipowerbutton
+
+echo "#################################################################"
+echo
+echo "Installation finished successfully!"
+echo
+echo "#################################################################"

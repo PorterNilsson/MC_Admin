@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 # Variables
 EFI_NAME="ipxe.efi"

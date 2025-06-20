@@ -1,5 +1,5 @@
 #!/bin/sh
-set -ex
+set -e
 
 KEY_NAME="mc_admin_dev"
 PRESEED_FILE="../vm/ipxe/http/preseed.cfg"

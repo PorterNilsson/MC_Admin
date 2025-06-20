@@ -1,5 +1,5 @@
 #!/bin/sh
-set -ex
+set -e
 
 # Install Docker
 apt-get install -y ca-certificates curl
@@ -27,8 +27,23 @@ echo 'export PATH=$PATH:/usr/local/go/bin' | tee -a /etc/profile
 go version
 rm -f go1.24.3.linux-arm64.tar.gz
 
-# Create project folder
-mkdir MC_Admin
+# Install git
+sudo apt-get install -y git
+
+# Generate SSH key for use with Github and cat it.
+ssh-keygen -t ed25519 -C "MC_Admin_Dev_VM" -f ~/.ssh/id_ed25519 -N "" -q
+echo "#################################################################"
+echo
+echo "Please copy and add this key to your SSH keys in GitHub:"
+echo
+cat ~/.ssh/id_ed25519.pub
+echo
+echo "Type anything when finished and hit enter."
+echo
+echo "#################################################################"
+read
+
+git clone git@github.com:PorterNilsson/MC_Admin.git
 
 # Script deletes itself at the end
 rm -- "$0"
