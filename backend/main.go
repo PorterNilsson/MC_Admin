@@ -6,6 +6,7 @@ import "net/http"
 
 func main() {
     fmt.Println("Hello, world!")
+    fmt.Println("Hello, world 2!")
 
     http.HandleFunc("/user", createUserHandler)
     fmt.Println("Server running on http://localhost:8080")
